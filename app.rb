@@ -31,14 +31,15 @@ post '/charge' do
       :currency    => 'usd',
       :customer    => customer
     )
+  if ENV['GV_SWITCH'] == 1
+    require 'googlevoiceapi'
+    gvapi = GoogleVoice::Api.new(ENV['GV_EMAIL'], ENV['GV_PASS'])
 
-  require 'googlevoiceapi'
-  gvapi = GoogleVoice::Api.new(ENV['GV_EMAIL'], ENV['GV_PASS'])
-
-  unless @cell.empty?
-    gvapi.sms("1#{@cell}", "Thank you for your payment for invoice ##{params[:invoice]} of $#{ @amount/100.0 }. KLUGIN Development is always at your service." )
+    unless @cell.empty?
+      gvapi.sms("1#{@cell}", "Thank you for your payment for invoice ##{params[:invoice]} of $#{ @amount/100.0 }. KLUGIN Development is always at your service." )
+    end
+      gvapi.sms(ENV['ADMIN_CELL'], "Hey boss! A payment for invoice ##{params[:invoice]} of $#{ @amount/100.0 } was just made!!!!!!!!! WOOHHOOO!!!" )
   end
-    gvapi.sms(ENV['ADMIN_CELL'], "Hey boss! A payment for invoice ##{params[:invoice]} of $#{ @amount/100.0 } was just made!!!!!!!!! WOOHHOOO!!!" )
 
   erb :charge
 
