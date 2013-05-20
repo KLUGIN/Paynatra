@@ -1,0 +1,18 @@
+<div class="logo">
+  <img src="/images/logo.png" width="350" />
+</div>
+  <form action="/charge" method="post" class="form-horizontal">
+    <article>
+      <label>* Email:</label>
+        <input type="text" name="email" id="email" placeholder="support@klugin.com" required />
+      <label>Mobile Number (Optional, you can recieve a reciept on your cell phone)</label>
+      <input type="text" name="mobilenumber" id="mobilenumber" placeholder="3012001881" />
+      <hr />
+      <label>* Invoice #</label>
+        <input type="text" name="invoice" id="invoice" placeholder="1234"  required/>
+      <label class="amount">* Payment Amount: ( NO DOLLAR SYMBOL )</label>
+        <input type="number" name="amount" id="amount" placeholder="50"  required/>
+    </article>
+    <hr />
+    <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button" data-key="<%= settings.publishable_key %>" data-name="SimpleTech Business Solutions"></script>
+  </form>

@@ -1,0 +1,17 @@
+<center>
+  <h2>Thank you for your payment.</h2>
+<p>
+	You paid <b>$<%= @amount/100.0 %></b> for invoice #<%= @invoice %>.<br />
+	<br />
+	The charge will appear as SIMPLETECH SOLUTIONS in your bank statement.
+</p>
+
+<% unless @cell.empty? %>
+<p>
+	We have sent a SMS notification to <%= @cell %>.
+</p>
+<% end  %>
+<p>
+		If have any questions, please do not hesitate in calling us, at (240) 415-2222.
+</p>
+</center>

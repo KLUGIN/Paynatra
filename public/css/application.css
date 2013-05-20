@@ -1,0 +1,16 @@
+body {
+	background: #24658D;
+}
+
+.container {
+	background: #FFFFFF;
+	border-radius: 10px;
+	height: 100%;
+	padding: 30px;
+	margin-top: 50px;
+	border: 3px solid #666666;
+}
+
+.logo img {
+  float: right;
+}
